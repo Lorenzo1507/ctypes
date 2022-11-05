@@ -1,0 +1,10 @@
+.PYTHON: run
+
+run: main
+    python funcao.py
+main : funcao.c
+        gcc -fPIC -shared -o libfuncao.so funcao.c
+        sudo cp libfuncao.so /usr/local/lib
+        sudo nano /etc/ld.so.conf.d/funcao.conf/
+        sudo ldconfig
+
